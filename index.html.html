@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BIOPHARM AQbD — Centre de validation analytique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D1117;--p:#161B22;--p2:#1B222B;--ink:#EDEFF2;--mut:#8B95A1;--rule:#2B3138;--ac:#FF5A1F;--ok:#33C17B;--bad:#E63946;--bl:#3E7CB1;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;min-height:100vh}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--p);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:14px;padding:10px 16px;overflow-x:auto}
+.logo{font-weight:800;letter-spacing:.06em;white-space:nowrap}.logo i{color:var(--ac);font-style:normal}
+.top button{background:none;border:1px solid transparent;color:var(--mut);padding:7px 12px;cursor:pointer;font-size:13px;white-space:nowrap;border-radius:6px}
+.top button.on{background:var(--ac);color:#fff}
+.live{margin-left:auto;font-size:11px;color:var(--ok);white-space:nowrap}
+main{max-width:1180px;margin:auto;padding:22px 16px 60px}
+.v{display:none}.v.on{display:block}
+.hero{text-align:center;padding:40px 10px 26px}
+.hero small{color:var(--ac);letter-spacing:.2em;font-size:11px}
+.hero h1{font-size:clamp(34px,8vw,72px);letter-spacing:.04em;margin:8px 0}
+.hero h2{font-weight:400;color:var(--mut);font-size:clamp(16px,2.6vw,24px)}
+.hero p{color:var(--mut);max-width:680px;margin:14px auto 0;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:26px 0}
+.pc{background:var(--p);border:1px solid var(--rule);border-radius:12px;padding:22px;cursor:pointer;transition:.2s}
+.pc:hover{border-color:var(--ac);transform:translateY(-3px)}
+.pc em{font-style:normal;font-size:30px}.pc h3{margin:10px 0 6px}.pc p{font-size:13px;color:var(--mut);margin-bottom:12px}.pc b{color:var(--ac);font-size:13px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:14px}
+.k{background:var(--p);border:1px solid var(--rule);border-radius:10px;padding:14px}
+.k b{display:block;font-size:28px}.k span{font-size:11px;color:var(--mut)}.k.b b{color:var(--bad)}.k.o b{color:var(--ok)}
+.pn{background:var(--p);border:1px solid var(--rule);border-radius:12px;padding:18px;margin-bottom:14px}
+.pn .t{font-size:11px;letter-spacing:.14em;color:var(--ac);text-transform:uppercase}
+.pn h3{margin:4px 0 8px;font-size:18px}
+.pn p,.pn li{font-size:13.5px;color:var(--mut)}.pn ul{padding-left:18px}.pn b{color:var(--ink)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:10px 0}
+label{font-size:12px;color:var(--mut);display:block}label b{color:var(--ink)}
+input[type=range],select{width:100%;margin-top:4px;accent-color:var(--ac)}
+select{background:var(--p2);color:var(--ink);border:1px solid var(--rule);padding:6px;border-radius:6px}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--mut);font-size:11px;font-family:system-ui}
+.vd{font-size:20px;font-weight:700;margin:6px 0 10px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px;min-width:420px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--rule);text-align:left}th{color:var(--mut);font-size:11px}
+.p{color:var(--ok);font-weight:700}.f{color:var(--bad);font-weight:700}
+.row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.row .n{width:150px;color:var(--mut);flex:none}.row .b{flex:1;height:16px;background:var(--p2);border-radius:4px;overflow:hidden}
+.row .b i{display:block;height:100%}.row .x{width:48px;text-align:right;font-weight:700}
+.mx{display:grid;grid-template-columns:60px repeat(3,1fr);gap:4px;font-size:12px;text-align:center;margin-top:8px}
+.mx div{padding:9px 2px;border-radius:6px;background:var(--p2)}.mx .y{background:rgba(61,220,151,.2);color:var(--ok)}.mx .nn{background:rgba(255,93,108,.2);color:var(--bad)}
+.gt{position:relative;height:26px;background:var(--p2);border-radius:5px;margin:6px 0}
+.gt i{position:absolute;top:0;height:100%;border-radius:5px;font-style:normal;font-size:11px;color:#fff;padding:5px 8px;white-space:nowrap}
+.st{display:flex;gap:8px;flex-wrap:wrap}.st div{flex:1;min-width:130px;background:var(--p2);border-radius:8px;padding:10px;font-size:12px;color:var(--mut)}.st b{display:block;color:var(--ac);margin-bottom:3px}
+.note{font-size:11px;color:var(--mut);margin-top:26px;border-top:1px solid var(--rule);padding-top:10px}
+body{font-family:Inter,system-ui,sans-serif}h1,h2,h3,.logo,.pc h3{font-family:Rajdhani,sans-serif;letter-spacing:.02em}
+.x,.vd,label,.note,.live,.hero small,th{font-family:'JetBrains Mono',ui-monospace,monospace}.k b,.hero h1{font-family:Rajdhani,sans-serif;font-weight:700}.vd{font-size:18px}
+.pn,.pc,.k{border-radius:10px}.pc{padding:28px 22px;text-align:center}.pc b{display:inline-block;padding:10px 18px;border-radius:8px;background:#FF5A1F;color:#fff}.pc:hover{border-color:var(--ac);transform:none}.hero small{display:inline-block;padding:8px 16px;border:1px solid var(--rule);border-radius:30px;color:#FFB238;letter-spacing:.1em}
+.top{background:var(--p);border:1px solid var(--rule);border-radius:10px;margin:14px 14px 0;padding:12px 16px}.logo{display:flex;align-items:center;gap:0}.logo:before{content:"BP";width:34px;height:34px;margin-right:12px;border-radius:8px;background:linear-gradient(135deg,#FF5A1F,#FFB238);color:#0D1117;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(255,90,31,.5)}.top button{border:1px solid var(--rule);background:var(--p2);color:var(--mut);border-radius:20px}.top button:hover{color:var(--ink)}.top button.on{background:rgba(255,90,31,.14);border-color:var(--ac);color:var(--ink);box-shadow:0 0 10px rgba(255,90,31,.2)}.live{border:1px solid var(--rule);border-radius:20px;padding:5px 12px;background:var(--p2);color:var(--ok)}
+.pn .t{color:#FFB238;font-size:10px;font-family:'JetBrains Mono',monospace}
+th{color:var(--mut);font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:.04em}td{border-bottom:1px dashed var(--rule)}
+</style>
+</head>
+<body>
+<div class="top" id="nav">
+<span class="logo">BIO<i>PHARM</i> · AQbD</span>
+<button class="on" data-v="home">Accueil</button>
+<button data-v="inno">💡 L'innovation</button>
+<button data-v="dash">📊 Dashboard</button>
+<button data-v="sim">📈 Simulation SFSTP</button>
+<button data-v="tests">🧪 Tests ICH Q2(R2)</button>
+<button data-v="ind">🚀 Industrialisation</button>
+<button data-v="ref">📚 Référentiel complet</button>
+<span class="live">● MODE DÉMONSTRATION</span>
+</div>
+<main>
+
+<div class="v on" id="home">
+<div class="hero"><small>CHALLENGE BIOPHARM 2026 · ENP × LCQ-2</small>
+<h1>BIOPHARM AQbD</h1><h2>Une innovation industrielle pour le contrôle qualité pharmaceutique</h2>
+<p>Un copilote de validation analytique : framework Analytical Quality by Design + outil logiciel qui réduit de 51 % les injections HPLC (390 → 190) tout en mettant le laboratoire en conformité ICH Q2(R2). Démontré sur 90 points réels, industrialisable en 11 mois.</p></div>
+<div class="g"><div class="k"><b>3</b><span>produits</span></div><div class="k"><b>6</b><span>datasets</span></div><div class="k"><b>90</b><span>points HPLC réels</span></div><div class="k o"><b>−51 %</b><span>injections</span></div><div class="k o"><b>6/6</b><span>conformes SFSTP</span></div></div>
+<div class="cards">
+<div class="pc" data-go="inno"><em>💡</em><h3>L'idée innovante</h3><p>Le pitch industriel : problème, rupture, impact, déploiement et demande.</p><b>Découvrir →</b></div>
+<div class="pc" data-go="ref"><em>📚</em><h3>Référentiel complet</h3><p>ATP, ANOVA, OLS/WLS, mapping réglementaire, Bayes V2, KPI, références.</p><b>Consulter →</b></div>
+<div class="pc" data-go="dash"><em>📊</em><h3>Dashboard AQbD</h3><p>Diagnostic de maturité, radar sur 9 dimensions, FMEA, 4 piliers du framework.</p><b>Explorer →</b></div>
+<div class="pc" data-go="sim"><em>📈</em><h3>Simulation du profil d'exactitude</h3><p>Intervalle de tolérance β-expectation interactif, 6 datasets, matrice de sensibilité λ × β.</p><b>Explorer →</b></div>
+<div class="pc" data-go="tests"><em>🧪</em><h3>Tests ICH Q2(R2)</h3><p>7 tests modernes, logigramme OLS vs WLS, détail du dataset Cp 50 mg PA.</p><b>Explorer →</b></div>
+<div class="pc" data-go="ind"><em>🚀</em><h3>Industrialisation</h3><p>Prototype Streamlit, roadmap de 11 mois, calculateur de ROI sur plusieurs cycles.</p><b>Découvrir →</b></div>
+</div>
+</div>
+
+<div class="v" id="inno">
+<div class="pn"><div class="t">L'idée en une phrase</div><p style="font-size:17px;color:var(--ink)"><b>AQbD Validator</b> : un copilote qui transforme la validation analytique pharmaceutique, de 2-3 jours de travail manuel et 390 injections à 5 minutes de calcul et 190 injections, avec un dossier conforme ICH Q2(R2) généré automatiquement.</p></div>
+<div class="two">
+<div class="pn"><div class="t">1 · Le problème industriel</div><ul><li>390 injections HPLC par cycle pour 3 produits, ~25 jours-analyste, ~19 750 €</li><li>Plans de validation en silos (linéarité, exactitude, fidélité séparées), 234 injections pour les seules gélules</li><li>Critère R² ≥ 0,99 seul : 6/6 « conformes », mais 0/6 passent les tests ICH Q2(R2) intégraux</li><li>Fenêtre réglementaire qui se ferme en 2027-2028 (ANSM, EMA, FDA), score de maturité 4/45</li></ul></div>
+<div class="pn"><div class="t">2 · La rupture</div><ul><li><b>Plan combiné</b> : 3 validations en 1 expérience de 30 points (−49 % par méthode)</li><li><b>Bracketing</b> : un dosage pivot pour toute une famille homothétique (−59 % gélules)</li><li><b>Erreur totale β-TI (SFSTP)</b> à la place de R² : biais + précision en un seul critère aligné sur l'ATP</li><li><b>Outil clic-bouton</b> : 7 tests modernes, verdicts, rapport HTML A4 en ~3 s</li><li><b>V2 Bayes (Wolfinger)</b> : TI plus serré quand n est petit, capitalisation sur l'historique</li></ul></div>
+</div>
+<div class="pn"><div class="t">3 · Avant / Après pour l'analyste</div><div class="wrap"><table><tr><th>Étape</th><th>Workflow Excel actuel</th><th>AQbD Validator</th><th>Gain</th></tr>
+<tr><td>Saisie</td><td>Copier-coller HPLC → Excel</td><td>Glisser-déposer</td><td>−50 %</td></tr>
+<tr><td>Linéarité</td><td>Macro VBA + R² manuel</td><td>Auto, 7 tests modernes</td><td>+600 % qualité</td></tr>
+<tr><td>Exactitude</td><td>Tableau manuel par niveau</td><td>Auto avec β-TI Mee</td><td>−90 % temps</td></tr>
+<tr><td>Visualisation</td><td>Graphiques statiques</td><td>Plotly interactif</td><td>+200 % usage</td></tr>
+<tr><td>Rédaction RVA</td><td>Word manuel ~2 jours</td><td>Auto ~3 s</td><td>−99,9 %</td></tr>
+<tr><td>Total</td><td>2-3 jours / méthode</td><td>~5 min / méthode</td><td class="p">−99 %</td></tr></table></div></div>
+<div class="g"><div class="k o"><b>−51 %</b><span>injections (−200 / cycle)</span></div><div class="k o"><b>−12 j</b><span>jours-analyste par cycle</span></div><div class="k o"><b>−5 000 €</b><span>coût direct par cycle</span></div><div class="k o"><b>−6,5 %</b><span>facteur k : 2,263 → 2,116</span></div><div class="k o"><b>+220 %</b><span>ROI cycle 1 (+29 800 €)</span></div><div class="k"><b>+150 à 250 k€</b><span>ROI cumulé estimé sur 5 ans</span></div></div>
+<div class="two">
+<div class="pn"><div class="t">4 · Pourquoi cette solution plutôt qu'une autre</div><div class="wrap"><table><tr><th>Option</th><th>Livraison POC</th><th>Score /8</th></tr><tr><td class="p">Streamlit (Python)</td><td>2-3 sem.</td><td class="p">7,5</td></tr><tr><td>ValidR (R/Shiny)</td><td>4-6 sem.</td><td>5,5</td></tr><tr><td>Custom Vue + API</td><td>8-12 sem.</td><td>5,0</td></tr><tr><td>PowerBI</td><td>1-2 sem.</td><td>4,0</td></tr></table></div><p>Réutilise 100 % du code statistique validé, aligné sur les 2 data scientists Python du LCQ-2, coût de licence nul. ValidR reste possible en V3 pour la certification 21 CFR Part 11 native (export US/UE).</p></div>
+<div class="pn"><div class="t">5 · Passage à l'échelle</div><ul><li>2 sites : Boudouaou et Oued Smar</li><li>Plus de 30 méthodes industrialisées d'ici mars 2027</li><li>Intégration LIMS (LabWare), audit trail 21 CFR Part 11, SLA 99,5 %</li><li>Positionnement leader Maghreb sur la modernisation analytique, puis Afrique francophone (Maroc, Tunisie, Sénégal, Côte d'Ivoire)</li></ul></div>
+</div>
+<div class="pn"><div class="t">6 · La demande</div><h3>GO Phase 1 : POC validé en 1,5 mois, ~10 j-h, ~5 k€</h3><p>Engagement minimal et autonome : pas d'obligation pour la suite. Décision éclairée en juin 2026 sur les phases 2 (pilote, ~10 k€) et 3 (production, ~10 k€). <b>Message pour la direction :</b> vos méthodes fonctionnent, modernisons leur cadre pour réduire les coûts de 51 %, anticiper l'audit 2027 et capitaliser sur un outil industrialisable en 11 mois.</p></div>
+</div>
+
+<div class="v" id="ref">
+<div class="two">
+<div class="pn"><div class="t">ATP par produit</div><div class="wrap"><table><tr><th>Produit</th><th>λ</th><th>β</th><th>Gamme</th><th>Niveaux</th></tr><tr><td>Comprimé 50 mg</td><td>±3 %</td><td>95 %</td><td>70-130 %</td><td>70, 90, 100, 110, 130</td></tr><tr><td>Crème 0,1 %</td><td>±5 %</td><td>95 %</td><td>80-120 %</td><td>80, 90, 100, 110, 120</td></tr><tr><td>Gélules 25/50/100 mg</td><td>±3 %</td><td>95 %</td><td>80-120 %</td><td>pivot 50 mg</td></tr></table></div><p>Plan combiné : 5 niveaux × 3 réplicats × 2 séries. Crème : lyse ultrason 15 min + agitation 15 min.</p></div>
+<div class="pn"><div class="t">ANOVA mixte (variance)</div><div class="wrap"><table><tr><th>Dataset</th><th>σ²r</th><th>σ²S</th><th>σ²R</th><th>σS/σR</th></tr><tr><td>Cp 50 PA</td><td>0,38</td><td>0,12</td><td>0,50</td><td>24 %</td></tr><tr><td>Cp 50 PC</td><td>0,42</td><td>0,14</td><td>0,56</td><td>25 %</td></tr><tr><td>Crème PA</td><td>0,75</td><td>0,28</td><td>1,03</td><td>27 %</td></tr><tr><td>Crème PC</td><td>0,68</td><td>0,22</td><td>0,90</td><td>24 %</td></tr><tr><td>Gélules PA</td><td>0,41</td><td>0,15</td><td>0,56</td><td>27 %</td></tr><tr><td>Gélules PC</td><td>0,45</td><td>0,18</td><td>0,63</td><td>29 %</td></tr></table></div><p>Modèle y = μ + S + ε ; σ²R = σ²r + σ²S ; degrés de liberté par Satterthwaite. L'effet série pèse 24-29 % : un plan multi-séries est nécessaire.</p></div>
+</div>
+<div class="two">
+<div class="pn"><div class="t">OLS vs WLS par dataset</div><div class="wrap"><table><tr><th>Dataset</th><th>Cochran C</th><th>Levene p</th><th>Décision</th></tr><tr><td>Cp 50 PA</td><td>0,470</td><td>0,824</td><td class="p">OLS</td></tr><tr><td>Cp 50 PC</td><td>0,512</td><td>0,365</td><td class="p">OLS</td></tr><tr><td>Crème PA</td><td>0,438</td><td>0,089</td><td class="p">OLS</td></tr><tr><td>Crème PC</td><td>0,395</td><td>0,634</td><td class="p">OLS</td></tr><tr><td>Gélules PA</td><td>0,485</td><td>0,217</td><td class="p">OLS</td></tr><tr><td>Gélules PC</td><td>0,521</td><td>0,438</td><td class="p">OLS</td></tr></table></div><p>Pondérations WLS standards si besoin : 1/x, 1/x², 1/y.</p></div>
+<div class="pn"><div class="t">Facteur k de Mee (β-expectation)</div><div class="wrap"><table><tr><th>n</th><th>β 90 %</th><th>β 95 %</th><th>β 99 %</th></tr><tr><td>3</td><td>1,898</td><td>2,263</td><td>2,975</td></tr><tr><td>6</td><td>1,776</td><td>2,116</td><td>2,781</td></tr><tr><td>12</td><td>1,712</td><td>1,990</td><td>2,621</td></tr></table></div><p>TI = x̄ ± k·s, conforme si inclus dans [100−λ ; 100+λ]. Tests : Mandel (p ≥ 0,05), Lack-of-Fit (p ≥ 0,05), Cochran (C &lt; 0,684), Levene, Shapiro-Wilk (p ≥ 0,05), Durbin-Watson (1,5 à 2,5).</p></div>
+</div>
+<div class="pn"><div class="t">Mapping réglementaire (13 clauses)</div><div class="wrap"><table><tr><th>Clause</th><th>Réponse du framework</th></tr><tr><td>ICH Q2(R2) §1.3</td><td>ATP formalisé (pilier 1)</td></tr><tr><td>ICH Q2(R2) §2.2</td><td>Bracketing, pivot 50 mg gélules (pilier 4)</td></tr><tr><td>ICH Q2(R2) §3.1</td><td>Spécificité : blanc, placebo, standard</td></tr><tr><td>ICH Q2(R2) §3.2</td><td>Linéarité : Mandel, LoF, Cochran, Levene</td></tr><tr><td>ICH Q2(R2) §3.3</td><td>Exactitude et fidélité : plan combiné 30 points</td></tr><tr><td>ICH Q2(R2) §3.3.3</td><td>Profil β-TI SFSTP (Mee 1984)</td></tr><tr><td>ICH Q2(R2) §3.4</td><td>Robustesse : DoE Plackett-Burman, 10 inj.</td></tr><tr><td>ICH Q14 §3.2.4</td><td>FMEA 31 modes / 4 critiques</td></tr><tr><td>ICH Q14 §4.1</td><td>Knowledge management : documentation + audit trail</td></tr><tr><td>USP &lt;1220&gt; §3</td><td>Stage 1 : piliers 1-2</td></tr><tr><td>USP &lt;1220&gt; §4</td><td>Stage 3 : cartes de contrôle SST (V2)</td></tr><tr><td>WHO TRS 1019 §3.2</td><td>Plan expérimental combiné conforme</td></tr><tr><td>WHO TRS 1019 §3.5</td><td>Critères d'acceptation prédéfinis par ATP</td></tr></table></div></div>
+<div class="two">
+<div class="pn"><div class="t">Risques actuels</div><div class="wrap"><table><tr><th>Risque</th><th>Prob.</th><th>Impact</th></tr><tr><td>Audit ANSM/EMA défavorable</td><td>Moy.</td><td>Élevé</td></tr><tr><td>Évolution ICH Q2(R2) sans roadmap</td><td>Élevée</td><td>Élevé</td></tr><tr><td>Changement d'instrument</td><td>Faible</td><td>Moyen</td></tr><tr><td>OOS difficile à investiguer</td><td>Moy.</td><td>Moyen</td></tr><tr><td>Turnover (perte de capacité)</td><td>Moy.</td><td>Moyen</td></tr></table></div></div>
+<div class="pn"><div class="t">FMEA : 31 modes</div><div class="wrap"><table><tr><th>Catégorie</th><th>Modes</th><th>Critiques</th></tr><tr><td>Matière</td><td>8</td><td>2</td></tr><tr><td>Méthode</td><td>9</td><td>1</td></tr><tr><td>Milieu</td><td>7</td><td>0</td></tr><tr><td>Mesure</td><td>7</td><td>1</td></tr></table></div><p>Actions : SOP + double pesée, SST quotidienne, CoA + blanc solvant, étalonnage balance.</p></div>
+</div>
+<div class="two">
+<div class="pn"><div class="t">Bayes (Wolfinger) en V2</div><p>Le fréquentiste (SFSTP/Mee) donne des TI larges pour n de 3 à 6 et n'intègre pas l'historique. Wolfinger traite μ et σ comme variables aléatoires avec a priori (MCMC). Cas d'usage : méthode critique avec n ≤ 5, validation accélérée d'un produit homothétique, re-validation après changement mineur, décision OOS contestée.</p></div>
+<div class="pn"><div class="t">Horizons et KPI</div><ul><li>Court terme (juin 2026) : POC fonctionnel sur 6 datasets, NPS analystes &gt; 50</li><li>Moyen terme (mars 2027) : &gt; 30 méthodes, 2 sites, SLA &gt; 99,5 %</li><li>Long terme (2030) : 100 % du portefeuille conforme ICH Q2(R2), ROI cumulé 5 ans +200 000 €, 0 finding critique</li></ul></div>
+</div>
+<div class="pn"><div class="t">Références</div><p>ICH Q2(R2) (nov. 2023) · ICH Q14 (nov. 2022) · USP &lt;1220&gt; (2018) · WHO TRS 1019 Annexe 4 (2019) · FDA 21 CFR Part 11 · Mee (1984) Technometrics 26(3) · Hubert et al. (2004) STP Pharma Pratiques 14(3) et (2008) J. Pharm. Biomed. Anal. 48(3) · Wolfinger (1998) J. Qual. Technol. 30(1) · Satterthwaite (1946) · Mandel (1964) · Durbin-Watson (1950-51) · Shapiro-Wilk (1965) · Cochran (1941) · Levene (1960). Documents Biopharm : RVA comprimé 50 mg, crème 0,1 % et gélules 25/50/100 mg ; données de linéarité (90 points HPLC).</p></div>
+</div>
+
+<div class="v" id="dash">
+<div class="pn"><div class="t">Problématique</div><p style="font-size:15px;color:var(--ink)">Comment valider 3 produits selon ICH Q2(R2) sans multiplier les injections HPLC, ni remettre en cause des méthodes qui fonctionnent déjà ?</p></div>
+<div class="g"><div class="k b"><b>4/45</b><span>score de maturité AQbD</span></div><div class="k"><b>390</b><span>injections par cycle</span></div><div class="k"><b>19 750 €</b><span>coût par cycle</span></div><div class="k b"><b>0/6</b><span>conformes ICH intégral</span></div></div>
+<div class="two">
+<div class="pn"><div class="t">Diagnostic</div><h3>Radar de maturité (9 dimensions)</h3><svg id="radar" viewBox="0 0 400 330"></svg><p>Orange : Biopharm actuel. Bleu : cible AQbD (42/45).</p></div>
+<div class="pn"><div class="t">Risk assessment</div><h3>FMEA : 31 modes, 4 critiques</h3>
+<div id="fm"></div>
+<p style="margin-top:8px">Calculateur RPN = P × S × D</p>
+<div class="ct"><label>P <b id="vp">5</b><input type="range" id="P" min="1" max="10" value="5"></label><label>S <b id="vs">6</b><input type="range" id="S" min="1" max="10" value="6"></label><label>D <b id="vd">6</b><input type="range" id="D" min="1" max="10" value="6"></label></div>
+<div class="vd" id="rpn"></div></div>
+</div>
+<div class="pn"><div class="t">Solution</div><h3>Quatre piliers sur le cycle de vie USP &lt;1220&gt;</h3>
+<div class="st"><div><b>1 · ATP par produit</b>λ, β, gamme et niveaux. Comprimé ±3 %, crème ±5 %, gélules ±3 %.</div><div><b>2 · FMEA</b>31 modes en 4 catégories, RPN ≥ 100 traités en priorité.</div><div><b>3 · Plan combiné</b>Linéarité + exactitude + fidélité : 5 niveaux × 3 répl. × 2 séries = 30 points. −49 % par méthode.</div><div><b>4 · Bracketing</b>Pivot 50 mg pour les gélules 25/50/100 mg. Gélules : −59 %.</div></div></div>
+</div>
+
+<div class="v" id="sim">
+<div class="pn"><div class="t">Simulation</div><h3>Profil d'exactitude SFSTP : TI = x̄ ± k·s, k = z·√(1+1/n)</h3>
+<div class="ct"><label>Dataset (valeurs réelles du rapport)<select id="ds"></select></label>
+<label>Biais aux extrémités <b id="vb"></b> %<input type="range" id="bias" min="-3" max="3" step="0.1"></label>
+<label>RSD <b id="vr"></b> %<input type="range" id="rsd" min="0.1" max="2" step="0.05"></label>
+<label>Réplicats n <b id="vn"></b><input type="range" id="n" min="3" max="30" value="3"></label>
+<label>λ ± <b id="vl"></b> %<input type="range" id="lam" min="1" max="6" step="0.5"></label>
+<label>β<select id="beta"><option value="90">90 %</option><option value="95" selected>95 %</option><option value="99">99 %</option></select></label></div>
+<div class="vd" id="verdict"></div></div>
+<div class="two">
+<div class="pn"><h3>Profil d'exactitude par niveau</h3><svg id="c1" viewBox="0 0 640 300"></svg></div>
+<div class="pn"><h3>Facteur k de Mee selon n</h3><svg id="c2" viewBox="0 0 640 300"></svg></div>
+</div>
+<div class="pn"><h3>Sensibilité λ × β pour ce réglage</h3><div class="mx" id="mx"></div><p style="margin-top:8px">Vert : tous les niveaux conformes. Rouge : au moins un niveau hors limites.</p></div>
+</div>
+
+<div class="v" id="tests">
+<div class="g"><div class="k o"><b>6/6</b><span>profil SFSTP</span></div><div class="k b"><b>0/6</b><span>ICH Q2(R2) intégral</span></div><div class="k"><b>7</b><span>tests appliqués</span></div></div>
+<div class="two">
+<div class="pn"><div class="t">Résultats</div><h3>Conformité par test (sur 6 datasets)</h3><div id="tb"></div><p>Les 3 tests en échec (Mandel, Lack-of-Fit, Durbin-Watson) révèlent une structure résiduelle non aléatoire : légère non-linéarité, drift d'injection ou pré-équilibration de colonne.</p></div>
+<div class="pn"><div class="t">Décision</div><h3>Logigramme OLS vs WLS (Cochran C)</h3>
+<label>Cochran C <b id="vc"></b><input type="range" id="co" min="0.2" max="1" step="0.005" value="0.47"></label>
+<div class="vd" id="cd"></div><p>Seuils du rapport : C &lt; 0,684 OLS justifié · 0,684 à 0,8 vérifier avec Levene · C &gt; 0,8 WLS recommandée. Les 6 datasets restent sous 0,53 : OLS justifié partout.</p>
+<label style="margin-top:12px">Durbin-Watson <b id="vw"></b><input type="range" id="dw" min="0.5" max="3.5" step="0.01" value="0.75"></label>
+<div class="vd" id="wd"></div></div>
+</div>
+<div class="pn"><div class="t">Détail</div><h3>Dataset Cp 50 mg PA</h3><div class="wrap"><table><tr><th>R²</th><th>Mandel p</th><th>Lack-of-Fit p</th><th>Cochran C</th><th>Durbin-Watson</th><th>k (n=3, β=95 %)</th></tr><tr><td>0,9989</td><td class="f">0,0026</td><td class="f">0,0004</td><td class="p">0,470</td><td class="f">0,753</td><td>2,263</td></tr></table></div><p style="margin-top:8px">R² excellent mais Mandel et Lack-of-Fit rejetés : c'est exactement ce que le critère R² seul ne voit pas.</p></div>
+</div>
+
+<div class="v" id="ind">
+<div class="g"><div class="k o"><b>+29 800 €</b><span>ROI net cycle 1</span></div><div class="k"><b>~25 k€</b><span>budget, 47 j-h</span></div><div class="k"><b>~5 min</b><span>par méthode (vs 2-3 j)</span></div><div class="k"><b>11 mois</b><span>POC → multi-sites</span></div></div>
+<div class="two">
+<div class="pn"><div class="t">Simulation</div><h3>ROI cumulé sur plusieurs cycles</h3>
+<div class="ct"><label>Cycles de validation par an <b id="vy"></b><input type="range" id="cy" min="0.5" max="3" step="0.5" value="1"></label></div>
+<label style="display:inline-block;margin-right:14px"><input type="checkbox" id="o1" checked> 2-3 méthodes en plus (+15 000 €/cycle)</label>
+<label style="display:inline-block"><input type="checkbox" id="o2" checked> Risque audit réduit (+30 000 €/cycle, estimé)</label>
+<svg id="roi" viewBox="0 0 640 280"></svg><p>Économies directes par cycle : 5 000 € d'injections + 4 800 € de jours-analyste. Investissement initial : 25 000 €.</p></div>
+<div class="pn"><div class="t">Roadmap</div><h3>3 phases, 11 mois</h3>
+<div class="gt"><i style="left:0;width:14%;background:var(--bl)">P1 POC</i></div>
+<div class="gt"><i style="left:14%;width:28%;background:var(--ac)">P2 Pilote LCQ-2</i></div>
+<div class="gt"><i style="left:42%;width:58%;background:var(--ok)">P3 Production multi-sites</i></div>
+<p>Phase 1 (mai-juin 2026, ~5 k€) : calculs validés sur 6 datasets. Phase 2 (juil.-sept., ~10 k€) : multi-utilisateurs, audit trail 21 CFR Part 11, IQ/OQ/PQ. Phase 3 (oct. 2026-mars 2027, ~10 k€) : API/LIMS, Docker, DoE, monitoring SST, Bayes.</p></div>
+</div>
+<div class="pn"><div class="t">Prototype</div><h3>SFSTP-AQbD Validator : workflow analyste en 5 étapes</h3>
+<div class="st"><div><b>1 · Import</b>Glisser-déposer le fichier HPLC</div><div><b>2 · ATP</b>λ, β, niveaux</div><div><b>3 · Profil</b>β-TI interactif</div><div><b>4 · Tests</b>7 tests ICH</div><div><b>5 · Rapport</b>HTML A4 en ~3 s</div></div>
+<p style="margin-top:10px">966 lignes Python, 14 fonctions, écart 0,000 avec le retraitement manuel sur 11 indicateurs. Streamlit choisi : réutilise 100 % du code statistique et colle aux compétences Python du LCQ-2 (score 7,5/8 contre 5,5 pour R/Shiny).</p></div>
+</div>
+
+<p class="note">Source : rapport « Optimisation de la validation analytique par approche AQbD » (ENP × Biopharm, mai 2026). Simulations indicatives basées sur la formule SFSTP du rapport. Équipe : Labatcha Amina, Manari Malak, Belgoumene Mokhtar Abdelghani, Boumezbeur Fedwa.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i),cv=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const Z={90:1.645,95:1.96,99:2.576},kf=(b,n)=>Z[b]*Math.sqrt(1+1/n);
+function go(v){document.querySelectorAll('.v').forEach(x=>x.classList.toggle('on',x.id==v));document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==v));window.scrollTo({top:0});draw()}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const DS=[['Cp 50 mg PA',.82,.43,3],['Cp 50 mg PC',.76,.52,3],['Crème PA',1.28,.89,5],['Crème PC',1.02,.75,5],['Gélules PA',.93,.61,3],['Gélules PC',.87,.68,3]];
+$('ds').innerHTML=DS.map((d,i)=>`<option value="${i}">${d[0]}</option>`).join('');
+function preset(){const d=DS[$('ds').value];$('bias').value=d[1];$('rsd').value=d[2];$('lam').value=d[3];draw()}
+$('ds').onchange=preset;
+function profile(bias,rsd,n,b){const k=kf(b,n);return[80,90,100,110,120].map(l=>{const m=100+bias*(l-100)/20;return{l,m,lo:m-k*rsd,hi:m+k*rsd}})}
+function radar(){const A=['ATP','FMEA','DoE','Plan','Profil','Tests','Stage 3','KM','Réglem.'],B=[1,0,0,0,0,1,0,1,1],T=[5,5,4,5,5,5,4,4,5],cx=200,cy=165,R=120;
+const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/9;return[cx+R*v/5*Math.cos(a),cy+R*v/5*Math.sin(a)]};
+let s='';[1,2,3,4,5].forEach(r=>s+=`<polygon points="${A.map((_,i)=>pt(i,r).join(',')).join(' ')}" fill="none" stroke="${cv('--rule')}"/>`);
+A.forEach((a,i)=>{const[x,y]=pt(i,5.9);s+=`<text x="${x-14}" y="${y+4}">${a}</text>`});
+s+=`<polygon points="${T.map((v,i)=>pt(i,v).join(',')).join(' ')}" fill="${cv('--bl')}" fill-opacity=".18" stroke="${cv('--bl')}" stroke-width="2"/>`;
+s+=`<polygon points="${B.map((v,i)=>pt(i,v).join(',')).join(' ')}" fill="${cv('--ac')}" fill-opacity=".5" stroke="${cv('--ac')}" stroke-width="2"/>`;$('radar').innerHTML=s}
+function fmea(){const M=[['Préparation échantillon',240],['Drift colonne HPLC',180],['Pureté solvant',168],['Calibration balance',144]];
+$('fm').innerHTML=M.map(m=>`<div class="row"><span class="n">${m[0]}</span><span class="b"><i style="width:${m[1]/2.4}%;background:var(--bad)"></i></span><span class="x">${m[1]}</span></div>`).join('')}
+function rpn(){const p=+$('P').value,s=+$('S').value,d=+$('D').value,r=p*s*d;$('vp').textContent=p;$('vs').textContent=s;$('vd').textContent=d;
+$('rpn').innerHTML=`RPN = ${r} · <span class="${r>=100?'f':r>=50?'':'p'}">${r>=100?'CRITIQUE : action prioritaire':r>=50?'À monitorer en routine':'Accepté'}</span>`}
+function sim(){const bias=+$('bias').value,rsd=+$('rsd').value,n=+$('n').value,lam=+$('lam').value,b=$('beta').value;
+$('vb').textContent=bias.toFixed(1);$('vr').textContent=rsd.toFixed(2);$('vn').textContent=n;$('vl').textContent=lam.toFixed(1);
+const k=kf(b,n),P=profile(bias,rsd,n,b),ok=P.map(p=>p.lo>=100-lam&&p.hi<=100+lam),c=ok.filter(Boolean).length;
+$('verdict').innerHTML=`k = ${k.toFixed(3)} · ${c}/5 niveaux conformes · <span class="${c==5?'p':'f'}">${c==5?'MÉTHODE CONFORME':'NON CONFORME'}</span>`;
+const W=640,H=300,pl=44,pr=14,pt=14,pb=28,yr=Math.max(lam+2,6),X=i=>pl+i*(W-pl-pr)/4,Y=v=>pt+(100+yr-v)*(H-pt-pb)/(2*yr);
+let s=`<rect x="${pl}" y="${Y(100+lam)}" width="${W-pl-pr}" height="${Y(100-lam)-Y(100+lam)}" fill="${cv('--ok')}" opacity=".12"/>`;
+[100+lam,100-lam,100].forEach((v,i)=>s+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="${i<2?cv('--bad'):cv('--mut')}" stroke-dasharray="${i<2?'5 4':'2 4'}"/><text x="4" y="${Y(v)+4}">${v.toFixed(1)}</text>`);
+const pl_=a=>P.map((p,i)=>`${X(i)},${Y(p[a])}`).join(' ');
+s+=`<polygon points="${pl_('hi')} ${P.map((p,i)=>`${X(4-i)},${Y(P[4-i].lo)}`).join(' ')}" fill="${cv('--bl')}" opacity=".15"/>`;
+['hi','lo'].forEach(a=>s+=`<polyline points="${pl_(a)}" fill="none" stroke="${cv('--bl')}" stroke-width="1.6"/>`);
+s+=`<polyline points="${pl_('m')}" fill="none" stroke="${cv('--ink')}" stroke-width="2"/>`;
+P.forEach((p,i)=>{const col=ok[i]?cv('--ok'):cv('--bad');s+=`<line x1="${X(i)}" x2="${X(i)}" y1="${Y(p.hi)}" y2="${Y(p.lo)}" stroke="${col}" stroke-width="4"/><circle cx="${X(i)}" cy="${Y(p.m)}" r="4" fill="${col}"/><text x="${X(i)-12}" y="${H-8}">${p.l} %</text>`});
+$('c1').innerHTML=s;
+const H2=300,N1=30,yl=1.6,yh=3.2,X2=v=>pl+(v-3)*(W-pl-pr)/(N1-3),Y2=v=>pt+(yh-v)*(H2-pt-pb)/(yh-yl);let t='';
+[1.8,2.2,2.6,3].forEach(v=>t+=`<line x1="${pl}" x2="${W-pr}" y1="${Y2(v)}" y2="${Y2(v)}" stroke="${cv('--rule')}"/><text x="8" y="${Y2(v)+4}">${v}</text>`);
+[3,6,12,18,24,30].forEach(v=>t+=`<text x="${X2(v)-6}" y="${H2-8}">${v}</text>`);
+[90,95,99].forEach(bb=>{let d='';for(let x=3;x<=N1;x++)d+=`${X2(x)},${Y2(kf(bb,x))} `;t+=`<polyline points="${d}" fill="none" stroke="${b==bb?cv('--ac'):cv('--mut')}" stroke-width="${b==bb?3:1.2}"/><text x="${W-pr-34}" y="${Y2(kf(bb,N1))-5}">β ${bb}</text>`});
+t+=`<circle cx="${X2(n)}" cy="${Y2(k)}" r="6" fill="${cv('--ink')}"/><text x="${X2(n)+9}" y="${Y2(k)-9}">k=${k.toFixed(3)}</text>`;$('c2').innerHTML=t;
+let m='<div></div><div>β 90 %</div><div>β 95 %</div><div>β 99 %</div>';
+[2,3,5].forEach(l=>{m+=`<div>λ ±${l} %</div>`;[90,95,99].forEach(bb=>{const g=profile(bias,rsd,n,bb).every(p=>p.lo>=100-l&&p.hi<=100+l);m+=`<div class="${g?'y':'nn'}">${g?'conforme':'hors limite'}</div>`})});$('mx').innerHTML=m}
+function tests(){const T=[['R² ≥ 0,99',6],['Cochran C',6],['Levene',5],['Shapiro-Wilk',5],['Durbin-Watson',2],['Mandel',0],['Lack-of-Fit',0]];
+$('tb').innerHTML=T.map(x=>`<div class="row"><span class="n">${x[0]}</span><span class="b"><i style="width:${x[1]/6*100}%;background:${x[1]>=5?'var(--ok)':x[1]>=2?'var(--ac)':'var(--bad)'}"></i></span><span class="x">${x[1]}/6</span></div>`).join('');
+const c=+$('co').value;$('vc').textContent=c.toFixed(3);$('cd').innerHTML=c<.684?'<span class="p">OLS justifié</span>':c<=.8?'<span>Vérifier avec Levene</span>':'<span class="f">WLS recommandée</span>';
+const w=+$('dw').value;$('vw').textContent=w.toFixed(2);$('wd').innerHTML=w>=1.5&&w<=2.5?'<span class="p">Résidus indépendants</span>':'<span class="f">'+(w<1.5?'Auto-corrélation positive : investiguer le drift':'Auto-corrélation négative')+'</span>'}
+function roi(){const y=+$('cy').value;$('vy').textContent=y;const g=9800+($('o1').checked?15000:0)+($('o2').checked?30000:0);
+const W=640,H=280,pl=54,pr=14,pt=14,pb=28,N=5,pts=[];for(let a=0;a<=N;a+=.5)pts.push([a,-25000+g*y*a]);
+const ymin=-30000,ymax=Math.max(40000,pts[pts.length-1][1]*1.1),X=v=>pl+v*(W-pl-pr)/N,Y=v=>pt+(ymax-v)*(H-pt-pb)/(ymax-ymin);
+let s=`<line x1="${pl}" x2="${W-pr}" y1="${Y(0)}" y2="${Y(0)}" stroke="${cv('--mut')}" stroke-dasharray="3 4"/><text x="6" y="${Y(0)+4}">0 €</text>`;
+[0,1,2,3,4,5].forEach(v=>s+=`<text x="${X(v)-6}" y="${H-8}">${v} an${v>1?'s':''}</text>`);
+s+=`<polyline points="${pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}" fill="none" stroke="${cv('--ok')}" stroke-width="3"/>`;
+const be=g*y>0?25000/(g*y):null;if(be&&be<=N)s+=`<circle cx="${X(be)}" cy="${Y(0)}" r="6" fill="${cv('--ac')}"/><text x="${X(be)+8}" y="${Y(0)-8}">rentable après ${be.toFixed(1)} an</text>`;
+const last=pts[pts.length-1][1];s+=`<text x="${W-pr-120}" y="${Y(last)-8}">${Math.round(last).toLocaleString('fr-FR')} € à 5 ans</text>`;$('roi').innerHTML=s}
+function draw(){radar();fmea();rpn();sim();tests();roi()}
+['P','S','D'].forEach(i=>$(i).oninput=rpn);['bias','rsd','n','lam','beta'].forEach(i=>$(i).oninput=sim);['co','dw'].forEach(i=>$(i).oninput=tests);['cy','o1','o2'].forEach(i=>$(i).oninput=roi);
+matchMedia('(prefers-color-scheme: light)').addEventListener('change',draw);
+preset();
+</script>
+</body>
+</html>
